@@ -31,7 +31,6 @@ interface CompanyItem {
 interface NavigationItem {
   name: string;
   href: string;
-  megaMenu?: boolean;
   items?: ServiceItem[] | CompanyItem[];
 }
 
@@ -74,7 +73,6 @@ const navigation: NavigationItem[] = [
   {
     name: "SERVICES",
     href: "/services",
-    megaMenu: true,
     items: services,
   },
   { name: "TRAINERS", href: "/trainers" },
@@ -100,18 +98,25 @@ export default function Navigation() {
   return (
     <header className="bg-white">
       {/* Top bar */}
-      <div className="bg-primary-900 text-white">
+      <div className="bg-gray-900">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-10 items-center justify-between">
-            <p className="text-sm">
+            <p className="text-sm font-medium text-gray-300">
               Special offer: 50% off your first month of training!
             </p>
-            <div className="flex items-center space-x-6 text-sm">
-              <Link href="/login" className="hover:text-gray-200">
-                MY ACCOUNT
+            <div className="flex items-center space-x-4">
+              <Link
+                href="/login"
+                className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+              >
+                Sign In
               </Link>
-              <Link href="/contact" className="hover:text-gray-200">
-                CONTACT
+              <span className="h-4 w-px bg-gray-600" aria-hidden="true" />
+              <Link
+                href="/contact"
+                className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+              >
+                Contact
               </Link>
             </div>
           </div>
@@ -119,19 +124,19 @@ export default function Navigation() {
       </div>
 
       {/* Main navigation */}
-      <Popover className="relative bg-white">
+      <div className="relative bg-white border-b border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-24 items-center justify-between">
+          <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
               <Link href="/" className="flex-shrink-0">
-                <span className="text-3xl font-bold text-primary-600">
+                <span className="text-2xl font-bold text-gray-900">
                   FitHome
                 </span>
               </Link>
             </div>
 
             {/* Desktop navigation */}
-            <div className="hidden md:flex md:items-center md:space-x-12">
+            <div className="hidden md:flex md:items-center md:space-x-8">
               {navigation.map((item) => (
                 <div
                   key={item.name}
@@ -144,15 +149,15 @@ export default function Navigation() {
                       <Popover.Button
                         className={classNames(
                           pathname === item.href
-                            ? "text-primary-600"
-                            : "text-gray-700 hover:text-primary-600",
-                          "group inline-flex items-center px-1 text-sm font-bold tracking-wider outline-none"
+                            ? "text-gray-900 border-b-2 border-gray-900"
+                            : "text-gray-600 hover:text-gray-900",
+                          "group inline-flex items-center px-1 py-2 text-sm font-medium tracking-wide outline-none"
                         )}
                       >
                         <span>{item.name}</span>
                         <ChevronDownIcon
                           className={classNames(
-                            "ml-2 h-4 w-4 transition-transform",
+                            "ml-1 h-4 w-4 transition-transform",
                             hoveredItem === item.name ? "rotate-180" : ""
                           )}
                           aria-hidden="true"
@@ -160,7 +165,7 @@ export default function Navigation() {
                       </Popover.Button>
 
                       <Transition
-                        as={Fragment}
+                        as="div"
                         enter="transition ease-out duration-200"
                         enterFrom="opacity-0 translate-y-1"
                         enterTo="opacity-100 translate-y-0"
@@ -168,28 +173,28 @@ export default function Navigation() {
                         leaveFrom="opacity-100 translate-y-0"
                         leaveTo="opacity-0 translate-y-1"
                       >
-                        <Popover.Panel className="absolute left-1/2 z-10 mt-3 w-screen max-w-md -translate-x-1/2 transform px-2 sm:px-0">
+                        <Popover.Panel className="absolute left-1/2 z-10 mt-1 w-screen max-w-md -translate-x-1/2 transform px-2 sm:px-0">
                           <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                            <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+                            <div className="relative grid gap-4 bg-white p-6">
                               {item.items.map((subItem) => (
                                 <Link
                                   key={subItem.name}
                                   href={subItem.href}
-                                  className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
+                                  className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50 transition-colors"
                                 >
                                   {isServiceItem(subItem) && subItem.icon && (
                                     <subItem.icon
-                                      className="h-6 w-6 flex-shrink-0 text-primary-600"
+                                      className="h-5 w-5 flex-shrink-0 text-gray-900"
                                       aria-hidden="true"
                                     />
                                   )}
                                   <div className="ml-4">
-                                    <p className="text-base font-medium text-gray-900">
+                                    <p className="text-sm font-medium text-gray-900">
                                       {subItem.name}
                                     </p>
                                     {isServiceItem(subItem) &&
                                       subItem.description && (
-                                        <p className="mt-1 text-sm text-gray-500">
+                                        <p className="mt-1 text-xs text-gray-600">
                                           {subItem.description}
                                         </p>
                                       )}
@@ -206,9 +211,9 @@ export default function Navigation() {
                       href={item.href}
                       className={classNames(
                         pathname === item.href
-                          ? "text-primary-600"
-                          : "text-gray-700 hover:text-primary-600",
-                        "text-sm font-bold tracking-wider"
+                          ? "text-gray-900 border-b-2 border-gray-900"
+                          : "text-gray-600 hover:text-gray-900",
+                        "text-sm font-medium tracking-wide px-1 py-2"
                       )}
                     >
                       {item.name}
@@ -218,69 +223,102 @@ export default function Navigation() {
               ))}
             </div>
 
-            <div className="hidden md:flex md:items-center md:space-x-6">
+            <div className="hidden md:flex md:items-center md:space-x-4">
               <Link
                 href="/book-consultation"
-                className="rounded-md bg-primary-600 px-6 py-3 text-base font-bold text-white shadow-sm hover:bg-primary-500 transition duration-150 ease-in-out"
+                className="rounded-md bg-gray-900 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 transition-colors"
               >
-                GET STARTED TODAY
+                Book Free Consultation
               </Link>
             </div>
 
-            {/* Mobile menu button */}
+            {/* Mobile menu */}
             <div className="flex items-center md:hidden">
-              <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500">
-                <span className="sr-only">Open main menu</span>
-                <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
-              </Disclosure.Button>
+              <Disclosure>
+                {({ open }) => (
+                  <div>
+                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900">
+                      <span className="sr-only">Open main menu</span>
+                      {open ? (
+                        <XMarkIcon
+                          className="block h-5 w-5"
+                          aria-hidden="true"
+                        />
+                      ) : (
+                        <Bars3Icon
+                          className="block h-5 w-5"
+                          aria-hidden="true"
+                        />
+                      )}
+                    </Disclosure.Button>
+
+                    <Disclosure.Panel className="absolute left-0 right-0 top-full z-10 bg-white shadow-lg">
+                      <div className="space-y-1 px-4 pb-3 pt-2">
+                        {navigation.map((item) => (
+                          <div key={item.name}>
+                            <Disclosure.Button
+                              as={Link}
+                              href={item.href}
+                              className={classNames(
+                                pathname === item.href
+                                  ? "text-gray-900 bg-gray-50"
+                                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-50",
+                                "block w-full py-2 text-left text-sm font-medium"
+                              )}
+                            >
+                              {item.name}
+                            </Disclosure.Button>
+                            {item.items && (
+                              <div className="pl-4 bg-gray-50">
+                                {item.items.map((subItem) => (
+                                  <Disclosure.Button
+                                    key={subItem.name}
+                                    as={Link}
+                                    href={subItem.href}
+                                    className="block w-full py-2 text-left text-sm text-gray-600 hover:text-gray-900"
+                                  >
+                                    {subItem.name}
+                                  </Disclosure.Button>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                        <div className="mt-4 space-y-3">
+                          <Link
+                            href="/book-consultation"
+                            className="block w-full rounded-md bg-gray-900 px-4 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-gray-800"
+                          >
+                            Book Free Consultation
+                          </Link>
+                          <div className="flex items-center justify-center space-x-4 pt-2 border-t border-gray-200">
+                            <Link
+                              href="/login"
+                              className="text-sm font-medium text-gray-600 hover:text-gray-900"
+                            >
+                              Sign In
+                            </Link>
+                            <span
+                              className="h-4 w-px bg-gray-300"
+                              aria-hidden="true"
+                            />
+                            <Link
+                              href="/contact"
+                              className="text-sm font-medium text-gray-600 hover:text-gray-900"
+                            >
+                              Contact
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </Disclosure.Panel>
+                  </div>
+                )}
+              </Disclosure>
             </div>
           </div>
         </div>
-
-        {/* Mobile menu */}
-        <Disclosure.Panel className="md:hidden">
-          <div className="space-y-1 pb-3 pt-2">
-            {navigation.map((item) => (
-              <Fragment key={item.name}>
-                <Disclosure.Button
-                  as={Link}
-                  href={item.href}
-                  className={classNames(
-                    pathname === item.href
-                      ? "bg-primary-50 text-primary-600"
-                      : "text-gray-700 hover:bg-gray-50 hover:text-primary-600",
-                    "block py-2 pl-3 pr-4 text-base font-bold"
-                  )}
-                >
-                  {item.name}
-                </Disclosure.Button>
-                {item.items && (
-                  <div className="pl-4">
-                    {item.items.map((subItem) => (
-                      <Disclosure.Button
-                        key={subItem.name}
-                        as={Link}
-                        href={subItem.href}
-                        className="block py-2 pl-3 pr-4 text-sm text-gray-600 hover:text-primary-600"
-                      >
-                        {subItem.name}
-                      </Disclosure.Button>
-                    ))}
-                  </div>
-                )}
-              </Fragment>
-            ))}
-            <div className="mt-4 px-4">
-              <Link
-                href="/book-consultation"
-                className="block w-full rounded-md bg-primary-600 px-4 py-3 text-center text-base font-bold text-white shadow-sm hover:bg-primary-500"
-              >
-                GET STARTED TODAY
-              </Link>
-            </div>
-          </div>
-        </Disclosure.Panel>
-      </Popover>
+      </div>
     </header>
   );
 }

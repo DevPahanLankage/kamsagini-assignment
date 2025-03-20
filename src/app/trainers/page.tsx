@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const trainers = [
   {
     name: "Sarah Johnson",
@@ -54,10 +56,12 @@ export default function Trainers() {
           {trainers.map((trainer) => (
             <li key={trainer.name} className="group relative">
               <div className="aspect-h-3 aspect-w-3 overflow-hidden rounded-2xl bg-gray-100">
-                <img
-                  className="object-cover object-center"
+                <Image
+                  className="h-48 w-48 rounded-full object-cover"
                   src={trainer.image}
                   alt={trainer.name}
+                  width={192}
+                  height={192}
                 />
                 <div className="flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity">
                   <div className="bg-white bg-opacity-90 p-4 rounded-lg w-full">

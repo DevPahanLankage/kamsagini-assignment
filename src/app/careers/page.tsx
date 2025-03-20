@@ -94,10 +94,9 @@ export default function Careers() {
               Join Our Team of Elite Trainers
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Turn your passion for fitness into a rewarding career. We're
-              looking for dedicated fitness professionals who want to make a
-              difference in people's lives through personalized in-home
-              training.
+              Turn your passion for fitness into a rewarding career. We&apos;re
+              looking for passionate individuals who want to make a difference
+              in people&apos;s lives through personalized in-home training.
             </p>
           </div>
         </div>

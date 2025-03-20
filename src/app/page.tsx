@@ -168,7 +168,7 @@ export default function Home() {
       {/* Promotional banner */}
       <div className="bg-primary-900 text-white">
         <div className="mx-auto max-w-7xl px-6 py-4 sm:px-6 lg:px-8">
-          <p className="text-center text-lg font-bold">
+          <p className="text-center text-lg font-extrabold text-black">
             Special Offer: Save 50% on your first month of training! Limited
             time only.
           </p>
@@ -179,7 +179,7 @@ export default function Home() {
       <div className="py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl">
               Personalized Training Programs
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
@@ -191,7 +191,7 @@ export default function Home() {
             {programs.map((program) => (
               <div
                 key={program.name}
-                className="flex flex-col overflow-hidden rounded-lg"
+                className="flex flex-col overflow-hidden rounded-lg shadow-md"
               >
                 <div className="flex-shrink-0">
                   <Image
@@ -204,10 +204,10 @@ export default function Home() {
                 </div>
                 <div className="flex flex-1 flex-col justify-between bg-white p-6">
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-gray-900">
+                    <h3 className="text-xl font-semibold text-gray-800">
                       {program.name}
                     </h3>
-                    <p className="mt-3 text-base text-gray-500">
+                    <p className="mt-3 text-base text-gray-600">
                       {program.description}
                     </p>
                   </div>
@@ -219,42 +219,86 @@ export default function Home() {
       </div>
 
       {/* How It Works section */}
-      <div className="bg-gray-50 py-24 sm:py-32">
+      <div className="bg-gradient-to-b from-gray-900 to-gray-800 py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              How It Works
+            <h2 className="text-base font-semibold leading-7 text-primary-300">
+              Simple Process
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              How It Works
+            </p>
+            <p className="mt-6 text-lg leading-8 text-gray-300">
               Getting started with FitHome is easy. Follow these simple steps to
               begin your fitness journey.
             </p>
           </div>
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-4">
-              {howItWorks.map((step) => (
+            <div className="grid max-w-xl grid-cols-1 gap-x-12 gap-y-16 lg:max-w-none lg:grid-cols-4">
+              {howItWorks.map((step, index) => (
                 <div
                   key={step.step}
-                  className="flex flex-col items-center text-center"
+                  className="relative flex flex-col items-center text-center"
                 >
-                  <div className="rounded-lg bg-primary-600 p-3 mb-6">
-                    <step.icon
-                      className="h-6 w-6 text-white"
-                      aria-hidden="true"
-                    />
+                  {/* Step Number */}
+                  <div className="mb-4 text-lg font-bold text-primary-300">
+                    Step {step.step}
                   </div>
-                  <dt className="text-xl font-semibold leading-7 text-gray-900">
-                    <div className="mb-2 text-primary-600">
-                      Step {step.step}
+                  {/* Connector Line and Icon Container */}
+                  <div className="relative flex h-20 w-full items-center justify-center">
+                    {/* Connector Line */}
+                    {index < howItWorks.length - 1 && (
+                      <div className="absolute left-[60%] top-[50%] hidden h-[2px] w-[90%] -translate-y-1/2 lg:block">
+                        <div className="h-full w-full border-t-2 border-dashed border-gray-700" />
+                      </div>
+                    )}
+                    {/* Circle Icon */}
+                    <div className="relative z-10">
+                      <div className="absolute inset-0 -m-3 rounded-full bg-primary-500/20 blur-lg" />
+                      <div className="relative rounded-full bg-primary-500 p-4 shadow-lg ring-1 ring-primary-400/20">
+                        <step.icon
+                          className="h-6 w-6 text-white"
+                          aria-hidden="true"
+                        />
+                      </div>
                     </div>
+                  </div>
+                  {/* Step Title */}
+                  <h3 className="mt-8 text-xl font-semibold leading-7 text-white">
                     {step.title}
-                  </dt>
-                  <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                    <p className="flex-auto">{step.description}</p>
-                  </dd>
+                  </h3>
+                  {/* Step Description */}
+                  <p className="mt-3 text-base leading-7 text-gray-300">
+                    {step.description}
+                  </p>
                 </div>
               ))}
-            </dl>
+            </div>
+            {/* CTA Button */}
+            <div className="mt-16 flex justify-center">
+              <Link
+                href="/book-consultation"
+                className="group relative inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 p-0.5 text-lg font-bold text-white transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-xl"
+              >
+                <span className="relative flex items-center gap-2 rounded-lg bg-gray-900 px-8 py-3.5 transition-all duration-300 ease-out group-hover:bg-opacity-0">
+                  <span>Start Your Journey Today</span>
+                  <svg
+                    className="h-5 w-5 transition-transform duration-300 ease-out group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                  </svg>
+                </span>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -263,7 +307,7 @@ export default function Home() {
       <div className="py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl">
               Success Stories
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
@@ -286,16 +330,16 @@ export default function Home() {
                     height={64}
                   />
                   <div>
-                    <h3 className="text-lg font-semibold leading-7 tracking-tight text-gray-900">
+                    <h3 className="text-lg font-semibold leading-7 tracking-tight text-gray-800">
                       {testimonial.author}
                     </h3>
-                    <p className="text-sm font-semibold leading-6 text-primary-600">
+                    <p className="text-sm font-semibold leading-6 text-primary-700">
                       {testimonial.role}
                     </p>
                   </div>
                 </div>
                 <blockquote className="mt-8 text-lg leading-8 text-gray-600">
-                  "{testimonial.content}"
+                  &ldquo;{testimonial.content}&rdquo;
                 </blockquote>
               </div>
             ))}
@@ -307,10 +351,10 @@ export default function Home() {
       <div className="bg-gray-50 py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:text-center">
-            <h2 className="text-base font-semibold leading-7 text-primary-600">
+            <h2 className="text-base font-semibold leading-7 text-primary-700">
               Why Choose Us
             </h2>
-            <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <p className="mt-2 text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl">
               Everything you need for your fitness journey
             </p>
             <p className="mt-6 text-lg leading-8 text-gray-600">
@@ -322,9 +366,9 @@ export default function Home() {
             <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-4">
               {features.map((feature) => (
                 <div key={feature.name} className="flex flex-col">
-                  <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900">
+                  <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-800">
                     <feature.icon
-                      className="h-5 w-5 flex-none text-primary-600"
+                      className="h-5 w-5 flex-none text-primary-700"
                       aria-hidden="true"
                     />
                     {feature.name}
@@ -340,7 +384,7 @@ export default function Home() {
       </div>
 
       {/* CTA section */}
-      <div className="bg-primary-600">
+      <div className="bg-gray-900">
         <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
@@ -353,7 +397,7 @@ export default function Home() {
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
                 href="/book-consultation"
-                className="rounded-md bg-white px-8 py-4 text-lg font-bold text-primary-600 shadow-sm hover:bg-gray-100"
+                className="rounded-md bg-white px-8 py-4 text-lg font-bold text-gray-900 shadow-sm hover:bg-gray-100"
               >
                 Book Free Consultation
               </Link>

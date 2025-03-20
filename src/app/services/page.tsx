@@ -132,7 +132,7 @@ export default function Services() {
             </p>
           </div>
           <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-3">
-            {tiers.map((tier, tierIdx) => (
+            {tiers.map((tier) => (
               <div
                 key={tier.id}
                 className={classNames(

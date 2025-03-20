@@ -36,12 +36,12 @@ export default function BookConsultation() {
 
   if (submitSuccess) {
     return (
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
+      <div className="bg-white mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
         <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl">
             Thank you for booking a consultation!
           </h2>
-          <p className="mt-4 text-lg leading-8 text-gray-600">
+          <p className="mt-4 text-lg leading-8 text-gray-700">
             We will contact you shortly to confirm your consultation time and
             match you with the perfect trainer.
           </p>
@@ -51,12 +51,12 @@ export default function BookConsultation() {
   }
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
+    <div className="bg-white mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
       <div className="mx-auto max-w-2xl">
-        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        <h2 className="text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl">
           Book Your Free Consultation
         </h2>
-        <p className="mt-4 text-lg leading-8 text-gray-600">
+        <p className="mt-4 text-lg leading-8 text-gray-700">
           Take the first step towards achieving your fitness goals. Fill out the
           form below to schedule your free consultation with one of our
           certified trainers.
@@ -66,7 +66,7 @@ export default function BookConsultation() {
           <div>
             <label
               htmlFor="name"
-              className="block text-sm font-medium leading-6 text-gray-900"
+              className="block text-sm font-medium leading-6 text-gray-800"
             >
               Full Name
             </label>
@@ -75,7 +75,7 @@ export default function BookConsultation() {
                 type="text"
                 id="name"
                 {...register("name", { required: "Name is required" })}
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 py-1.5 text-gray-800 bg-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
               />
               {errors.name && (
                 <p className="mt-2 text-sm text-red-600">
@@ -88,7 +88,7 @@ export default function BookConsultation() {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium leading-6 text-gray-900"
+              className="block text-sm font-medium leading-6 text-gray-800"
             >
               Email
             </label>
@@ -103,7 +103,7 @@ export default function BookConsultation() {
                     message: "Invalid email address",
                   },
                 })}
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 py-1.5 text-gray-800 bg-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
               />
               {errors.email && (
                 <p className="mt-2 text-sm text-red-600">
@@ -116,7 +116,7 @@ export default function BookConsultation() {
           <div>
             <label
               htmlFor="phone"
-              className="block text-sm font-medium leading-6 text-gray-900"
+              className="block text-sm font-medium leading-6 text-gray-800"
             >
               Phone Number
             </label>
@@ -125,7 +125,7 @@ export default function BookConsultation() {
                 type="tel"
                 id="phone"
                 {...register("phone", { required: "Phone number is required" })}
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 py-1.5 text-gray-800 bg-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
               />
               {errors.phone && (
                 <p className="mt-2 text-sm text-red-600">
@@ -138,7 +138,7 @@ export default function BookConsultation() {
           <div>
             <label
               htmlFor="preferredTrainer"
-              className="block text-sm font-medium leading-6 text-gray-900"
+              className="block text-sm font-medium leading-6 text-gray-800"
             >
               Preferred Trainer Gender
             </label>
@@ -146,7 +146,7 @@ export default function BookConsultation() {
               <select
                 id="preferredTrainer"
                 {...register("preferredTrainer")}
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 py-1.5 text-gray-800 bg-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
               >
                 <option value="no-preference">No Preference</option>
                 <option value="male">Male Trainer</option>
@@ -158,7 +158,7 @@ export default function BookConsultation() {
           <div>
             <label
               htmlFor="preferredTime"
-              className="block text-sm font-medium leading-6 text-gray-900"
+              className="block text-sm font-medium leading-6 text-gray-800"
             >
               Preferred Consultation Time
             </label>
@@ -169,7 +169,7 @@ export default function BookConsultation() {
                 {...register("preferredTime", {
                   required: "Preferred time is required",
                 })}
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 py-1.5 text-gray-800 bg-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
               />
               {errors.preferredTime && (
                 <p className="mt-2 text-sm text-red-600">
@@ -182,7 +182,7 @@ export default function BookConsultation() {
           <div>
             <label
               htmlFor="goals"
-              className="block text-sm font-medium leading-6 text-gray-900"
+              className="block text-sm font-medium leading-6 text-gray-800"
             >
               Your Fitness Goals
             </label>
@@ -193,7 +193,7 @@ export default function BookConsultation() {
                 {...register("goals", {
                   required: "Please describe your fitness goals",
                 })}
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 py-1.5 text-gray-800 bg-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
                 placeholder="Tell us about your fitness goals and what you hope to achieve..."
               />
               {errors.goals && (
