@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { Disclosure, Popover, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
