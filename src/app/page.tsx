@@ -304,45 +304,74 @@ export default function Home() {
       </div>
 
       {/* Testimonials section */}
-      <div className="py-24 sm:py-32">
+      <div className="bg-gradient-to-b from-gray-50 to-white py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Success Stories
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Hear from our clients who have transformed their lives with
-              FitHome personal training.
+              Real results from real people. See how our personalized training
+              has transformed lives.
             </p>
           </div>
           <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
             {testimonials.map((testimonial) => (
               <div
                 key={testimonial.author}
-                className="flex flex-col justify-between"
+                className="relative flex flex-col bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300"
               >
-                <div className="flex items-center gap-x-6">
-                  <Image
-                    className="h-16 w-16 rounded-full"
-                    src={testimonial.image}
-                    alt={testimonial.author}
-                    width={64}
-                    height={64}
-                  />
-                  <div>
-                    <h3 className="text-lg font-semibold leading-7 tracking-tight text-gray-800">
-                      {testimonial.author}
-                    </h3>
-                    <p className="text-sm font-semibold leading-6 text-primary-700">
-                      {testimonial.role}
-                    </p>
+                <div className="absolute -top-8 left-1/2 -translate-x-1/2">
+                  <div className="relative h-16 w-16 rounded-full ring-4 ring-white">
+                    <Image
+                      className="h-16 w-16 rounded-full object-cover"
+                      src={testimonial.image}
+                      alt={testimonial.author}
+                      width={64}
+                      height={64}
+                    />
                   </div>
                 </div>
-                <blockquote className="mt-8 text-lg leading-8 text-gray-600">
-                  &ldquo;{testimonial.content}&rdquo;
-                </blockquote>
+                <div className="pt-12 px-6 pb-8">
+                  <div className="h-1 w-12 bg-primary-600 mx-auto mb-6" />
+                  <blockquote className="text-lg leading-8 text-gray-600 text-center">
+                    &ldquo;{testimonial.content}&rdquo;
+                  </blockquote>
+                  <div className="mt-8 text-center">
+                    <h3 className="text-lg font-semibold leading-7 tracking-tight text-gray-900">
+                      {testimonial.author}
+                    </h3>
+                    <div className="mt-1 text-sm font-medium text-gray-900 bg-gray-100 px-3 py-1 rounded-full inline-block">
+                      {testimonial.role}
+                    </div>
+                  </div>
+                </div>
               </div>
             ))}
+          </div>
+          <div className="mt-16 flex justify-center">
+            <Link
+              href="/book-consultation"
+              className="group relative inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-gray-900 to-gray-800 p-0.5 text-lg font-bold text-white transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-xl"
+            >
+              <span className="relative flex items-center gap-2 rounded-lg bg-gray-800 px-8 py-3.5 transition-all duration-300 ease-out group-hover:bg-opacity-0">
+                <span>Start Your Transformation</span>
+                <svg
+                  className="h-5 w-5 transition-transform duration-300 ease-out group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              </span>
+            </Link>
           </div>
         </div>
       </div>
@@ -351,7 +380,7 @@ export default function Home() {
       <div className="bg-gray-50 py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:text-center">
-            <h2 className="text-base font-semibold leading-7 text-primary-700">
+            <h2 className="text-base font-semibold leading-7 text-gray-900">
               Why Choose Us
             </h2>
             <p className="mt-2 text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl">
